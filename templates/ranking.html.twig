@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<body>
+<h1 style="color: red">Ranking de estadisticas:</h1>
+<br><br>
+    <table style='width: 100%'>
+        <thead>
+          <tr style='color: white'>
+            <th>Level </th>
+            <th>Lifetime_ap </th>
+            <th>Current_ap </th>
+            <th>Unique_portals_visited</th>
+            <th>Furthest_drone_distance</th>
+            <th>Fecha de upload </th>
+          </tr>
+        </thead>
+            <tbody>
+            {# Creo el for antes del tr para crear una fila por cada usuario #}
+            {% for dato in resultados %} 
+                <tr style='text-align: center'>
+                {# para acceder a los atributos utilizo los getters de la tabla Stats (campo level, lifetimeAp, etc...) #}
+                    <td>{{ dato.getLevel() }} </td>
+                    <td>{{ dato.getLifetimeAp() }} </td>
+                    <td>{{ dato.getCurrentAp() }} </td>
+                    <td>{{ dato.getUniquePortals() }} </td>
+                    <td>{{ dato.getFurthestDrone() }} </td> 
+                    <td>{{ dato.getIdUpload().getDate()|date('d/m/Y') }} </td>           
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <br><br>
+{# Boton para volver a la pagina del perfil #}
+    <button><a href='/login' style="color: red">Volver</a></button>
+</body>
+{% endblock %}

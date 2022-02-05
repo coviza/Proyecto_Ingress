@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<body>
+<h1 style="color: red">Eventos</h1>
+<br><br>
+    <table style='width: 100%'>
+        <thead>
+          <tr style='color: white'>
+            <th>Nombre </th>
+            <th>Alias</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+            <th>Lugar</th>
+            <th>Detalles</th>
+          </tr>
+        </thead>
+            <tbody>
+            {% for dato in resultados %} 
+                <tr style='text-align: center'>
+                {# para acceder a los atributos utilizo los getters de la tabla Events (campo name_event, alias_event, etc...) #}
+                    <td>{{ dato.getNameEvent() }} </td>
+                    <td>{{ dato.getAliasEvent() }} </td>
+                    <td>{{ dato.getDescripEvent() }} </td>
+                    <td>{{ dato.getDateEvent()|date('d/m/Y') }} </td>
+                    <td>{{ dato.getPlaceEvent() }} </td> 
+                    {# Cada boton me muestra el ID del Evento #}
+                    <td><button type='button'><a href='/participantes/{{ dato.getId() }}'>Agentes Asociados</a></button></td>          
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <br><br>
+{# Boton para volver a la pagina de logeo #}
+    <button><a href='/login' style="color: red">Volver</a></button>
+</body>
+{% endblock %}

@@ -1,0 +1,13 @@
+{# Plantilla a la cual soy redirigido una vez he introducido los datos necesarios para registrar un nuevo usuario
+en la base de datos.  #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {# <h1>Estoy en insert</h1> #}
+    
+    {# Creo un boton para redirigir a la Dashboard una vez creado el nuevo usuario #}
+    {# <p>Bienvenido a Ingress, se ha registrado con exito!</p> #}
+    <button><a href='/' style="color: red">Dashboard</a></button><br>
+    
+{% endblock %}

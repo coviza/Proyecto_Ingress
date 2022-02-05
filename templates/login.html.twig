@@ -1,0 +1,55 @@
+{# Extiendo de la plantilla 'base' y por tanto heredo el bloque 'body' que habia declarado anteriormente. 
+Lo defino creando un formulario para poder introducir datos ( username, password y faction 
+en caso de querer registrarnos por primera vez en el juego). Añado funcionalidad, en este caso se trata de 
+cargar las rutas '/login' declarada previamente en el archivo '/config/Routes.json' cuando clickeo el boton de 'LOGIN NOW',
+o cargar la ruta '/insert' al clickear el boton de 'REGISTER' para que me redirigan a esa ruta en concreto. #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h1>Control Panel</h1>
+	<!-- main -->
+	<div class="main">
+		<!--login-profile-->
+		<!--login-profile-->
+		<!--signin-form-->
+		<div class="w3">
+			<div class="signin-form profile">
+				<h3>Login</h3>
+				
+				<div class="login-form">
+					<form action="/login" method="post">
+						<input type="text" name="agent_name" placeholder="User" required="">
+						<input type="password" name="password" placeholder="Password" required="">
+						<div class="tp">
+							<input type="submit" value="LOGIN NOW">
+						</div>
+					</form>
+				</div>
+				<p style='color: white;'> I hope you enjoy this game, fellow player</p>
+			</div>
+		</div>
+		<div class="agile">
+			<div class="signin-form profile">
+				<h3>Register</h3>
+				
+				<div class="login-form">
+					<form action="/insert" method="post">
+						<input type="text" name="agent_name" placeholder="Username" required="">
+						<input type="password" name="password" placeholder="Password" required="">
+                        <input type="text" name="faction" placeholder="Faction" required="">
+						{# <input type="password" name="password" placeholder="Confirm Password" required=""> #}
+						<input type="submit" value="REGISTER">
+					</form>
+				</div>
+				<p style='color: white;'> By clicking register, I agree to your terms</p>
+			</div>
+		</div>
+		<div class="clear"></div>
+			
+	</div>
+	
+	<div class="copyright">
+		<p> &copy; 2021 Register Login Widget . All rights reserved | Designed by <a href="https://www.instagram.com/pablo_coviza/" target="_blank" >Pablo_Coviza</a></p>
+	</div>
+{% endblock %}

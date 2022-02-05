@@ -1,0 +1,24 @@
+{# Plantilla 'padre' de la que heredaran el resto de plantillas, en la que tengo la base del documento HTML5.
+A partir de aqui ire definiendo el bloque 'body' con la sintexis de twig para ir anadiendo funcionalidades
+en el resto de plantillas twig que vaya creando. #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de control</title>
+    {# <link rel="stylesheet" type="text/css" href="/css/plantillaDashboard.css"> #}
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style2.css">
+</head>
+<h1>Juego Ingress</h1>
+{% block body %}
+<!-- Estructuramos el Body en el bloque 'body' -->
+{% endblock %}
+
+{% block footer %}
+<!-- Estructuramos el footer en el bloque 'footer' -->
+{% endblock %}
+</html>

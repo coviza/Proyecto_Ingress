@@ -1,0 +1,30 @@
+{
+    "/": {
+        "controller": "DashBoardController",
+        "action": "dashBoard"
+    },
+    "/login": {
+        "controller": "LoginController",
+        "action": "loginAttempt"
+    },
+    "/insert": {
+        "controller": "AgentInsertController",
+        "action": "insertAgents"
+    },
+    "/upload": {
+        "controller": "InsertStatsController",
+        "action": "insertStats"
+    },
+    "/rankingEstadisticas": {
+        "controller": "RankingEstadisticasController",
+        "action": "Ranking"
+    },
+    "/events": {
+        "controller": "EventsController",
+        "action": "mostrarEventos"
+    },
+    "/participantes": {
+        "controller": "ParticipantesController",
+        "action": "mostrarParticipantes"
+    }
+}

@@ -1,0 +1,16 @@
+{# Plantilla a la cual soy redirigido si se introduce un usuario y/o contrasena no validos  #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{# En esta plantilla informo al usuario que se ha equivocado al introducir el id o el pass en el login 
+y le proporciono un boton para redirigirlo al dashboard #}
+
+{# <h1>Estoy en wrong</h1> #}
+
+{# <h2>El usuario o la contraseña son incorrectos</h2> #}
+<body>
+    <button><a href='/' style="color: red">Volver</a></button><br>
+</body>
+{% endblock %}

@@ -1,0 +1,98 @@
+{# Plantilla a la cual soy redirigido una vez he introducido los datos necesarios para logearme en la aplicacion
+y donde muestro el perfil de usuario, estadisticas y un textarea para subir estadisticas a la base de datos.  #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{# <h1>Estoy en stats</h1> #}
+
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<nav> 
+
+        <button style='font-size: 40px'><a href='/events' style="color: black">Eventos</a></button>
+
+        <button style='font-size: 40px'><a href='/rankingEstadisticas' style="color: black">Ranking</a></button><br><br><br>
+        
+</nav>
+<div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-8 col-lg-6">
+            <!-- Section Heading-->
+            <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <h3 style='color: yellow'>Bienvenido, este es su perfil de usuario: {# {{ resultados.getIdAgent().getAgentName() }} #}{{ session }}</h3><br><br>
+              <div class="line"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Single Advisor-->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <!-- Team Thumb-->
+              <div class="advisor_thumb"><img src="https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=Blank&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=BlazerSweater&eyeType=Happy&eyebrowType=RaisedExcited&mouthType=Smile&skinColor=Light" alt="">
+                <!-- Social Info-->
+                {# <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+              </div> #}
+              <!-- Team Details-->
+              <div class="single_advisor_details_info">
+              {# para acceder a los atributos utilizo los getters de la tabla stats (campo idAgent de la tabla stats y 
+              a su vez accedo al campo agentName de la tabla agents) #}
+                <h6>{{ resultados.getIdAgent().getAgentName() }}</h6>
+                {# De esta forma accedo desde aqui en vez de desde el LoginController 
+                <h6>{{ resultados.getStats()[0].getIdAgent().getAgentName() }}</h6> #}
+                <table>
+        <thead>
+          <tr>
+            <th>level </th>
+            <th>lifetime_ap </th>
+            <th>current_ap </th>
+            {# <th>unique_portals_visited ----</th>
+            <th>furthest_drone_distance ---</th> #}
+          </tr>
+        </thead>
+            <tbody>
+                <tr>
+                {# para acceder a los atributos utilizo los getters de la tabla stats (campo Level, LifetimeAp, etc...) #}
+                    <td>{{ resultados.getLevel() }}  ----- </td>
+                    <td>{{ resultados.getLifetimeAp() }} ----- </td>
+                    <td>{{ resultados.getCurrentAp() }} ----- </td>
+                    {# <td>{{ resultados.getUniquePortalsVisited() }} ----- </td>
+                    <td>{{ resultados.getFurthestDroneDistance() }} ----- </td> #}
+                    {# Forma alternativa de acceder a los campos de la tabla Stats desde la tabla Agents
+                    <td>{{ resultados.getStats()[0].getLevel() }}  ----- </td> #}
+                </tr>
+            </tbody>
+</table>
+                <p> </p>
+              </div>
+            </div>
+          </div>
+          <h2 style='color: white'>{{ session }} , si desea desloguear pulse en el siguiente boton:</h2>
+        <button><a href='/' style="color: red">Log out</a></button>
+        
+
+</body>
+{% endblock %}
+
+{% block footer %}
+<body>
+
+  <div class="signin-form profile">
+				<h3>Subida de estadisticas a la tabla uploads</h3>
+				
+				<div class="login-form">
+					<form action="/upload" method="post">
+          {# Comprobacion de variable de sesion #}
+          {# <h3 style='color: white' name='username' value="{{ session }}">Bienvenido, este es su perfil de usuario: {{ session }}</h3><br><br> #}
+          <textarea name="estadisticas" id="" cols="160" rows="11">
+            </textarea>
+						<input type="submit" value="UPLOAD">
+					</form>
+				</div>
+				<p style='color: white;'> By clicking upload, database will be updated </p>
+			</div>
+		</div>
+</body>
+{% endblock %}

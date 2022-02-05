@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<body>
+<h1 style="color: red">Participantes</h1>
+<br><br>
+    <table style='width: 100%'>
+        <thead>
+          <tr style='color: white'>
+            <th>Id </th>
+            <th>Nombre</th>
+          </tr>
+        </thead>
+            <tbody>
+            {% for dato in resultados %} 
+                <tr style='text-align: center'>
+                    <td>{{ dato.getAgent().getIdAgent() }} </td>
+                    <td>{{ dato.getAgent().getAgentName() }} </td>      
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <br><br>
+{# Boton para volver a la pagina del perfil #}
+    <button><a href='/login' style="color: red">Volver</a></button>
+</body>
+{% endblock %}
